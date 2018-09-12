@@ -1,6 +1,8 @@
 package com.mariobanay.unittesting.unittesting.controller;
 
 import static org.junit.Assert.assertEquals;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,7 +31,10 @@ public class HelloWorldControllerTest {
 				.accept(MediaType.APPLICATION_JSON); 
 		
 		// Executing request
-		MvcResult result = mockMvc.perform(request).andReturn();
+		MvcResult result = mockMvc.perform(request)
+				.andExpect(status().isOk())
+				.andExpect(content().string("Hello World"))
+				.andReturn();
 		
 		
 		// verify "Hello World"
