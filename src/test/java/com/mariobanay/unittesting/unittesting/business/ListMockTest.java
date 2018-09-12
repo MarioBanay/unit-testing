@@ -13,6 +13,7 @@ import static org.mockito.Mockito.when;
 import java.util.List;
 
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 
 public class ListMockTest {
 
@@ -45,6 +46,7 @@ public class ListMockTest {
 		assertEquals("Mario", mock.get(1));
 	}
 	
+	@Test
 	public void verificationBasics() {
 		
 		// Provjera dali je određena metoda pozvana sa odr
@@ -63,8 +65,36 @@ public class ListMockTest {
 		
 		// nikad nije pozvan s 2
 		verify(mock, never()).get(2);
+	}
+	
+	@Test
+	public void argumentCapturing() {
 		
+		mock.add("SomeString");
+		
+		ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
+		verify(mock).add(captor.capture());
+		
+		// želimo provjeriti koji je argument prosljeđen add
+		assertEquals("SomeString", captor.getValue());
+		
+	}
+	
+	@Test
+	public void multipleArgumentCapturing() {
+		
+		mock.add("SomeString1");
+		mock.add("SomeString2");
+		
+		
+		ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
+		verify(mock, times(2)).add(captor.capture());
+		
+		// želimo provjeriti koji je argument prosljeđen add
+		assertEquals("SomeString1", captor.getAllValues().get(0));
+		assertEquals("SomeString2", captor.getAllValues().get(1));
 		
 		
 	}
+	
 }
