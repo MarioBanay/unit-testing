@@ -5,6 +5,8 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.util.Arrays;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +65,30 @@ public class ItemControllerTest {
 		MvcResult result = mockMvc.perform(request)
 				.andExpect(status().isOk())
 				.andExpect(content().json("{id: 2, name: 'Item 2', price: 10, quantity: 10}"))
+				.andReturn();
+		
+		// JSONAssert.assertEquals(expected, actual, false)
+		// JSONAssert.assertEquals(expected, result.getResponse().getContentAsString(), false)
+		
+	}
+	
+	@Test
+	public void retrieveAllItems_basic() throws Exception {
+		
+		when(businessService.retrieveAllItems()).thenReturn(
+				Arrays.asList(new Item (2, "Item 2", 10, 10),
+				new Item (3, "Item 3", 20, 20))
+		);
+		
+		// call "/dummy-item" response: application/json
+		RequestBuilder request = MockMvcRequestBuilders
+				.get("/all-items-from-database")
+				.accept(MediaType.APPLICATION_JSON); 
+		
+		// Executing request
+		MvcResult result = mockMvc.perform(request)
+				.andExpect(status().isOk())
+				.andExpect(content().json("[{id: 2, name: 'Item 2', price: 10, quantity: 10},{id: 3, name: 'Item 3', price: 20, quantity: 20}]"))
 				.andReturn();
 		
 		// JSONAssert.assertEquals(expected, actual, false)
