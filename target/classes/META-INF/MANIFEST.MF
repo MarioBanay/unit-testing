@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
-Implementation-Title: unit-testing
+Implementation-Title: npp_app
 Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: M
-Implementation-Vendor-Id: com.mariobanay.unittesting
+Implementation-Vendor-Id: com.mariobanay.npp
 Build-Jdk: 1.8.0_181
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
- ot-starter-parent/unit-testing
+ ot-starter-parent/npp_app
 Created-By: Maven Integration for Eclipse
 
