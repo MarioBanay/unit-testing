@@ -1,10 +1,12 @@
 package com.mariobanay.npp.business;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.mariobanay.npp.business.exceptions.NoItemException;
 import com.mariobanay.npp.data.ItemRepository;
 import com.mariobanay.npp.model.Item;
 
@@ -28,5 +30,16 @@ public class ItemServiceImpl implements ItemService {
 		System.out.println("Inside retrieveAllItems");
 		
 		return items;	
+	}
+	
+	public Optional findById(Integer id) throws NoItemException{
+	
+		Optional item = repository.findById(id);
+		
+		if (!item.isPresent()) {
+			throw new NoItemException("Exception: ne postoji item s trazenim id");
+		}
+		
+		return item;
 	}
 }

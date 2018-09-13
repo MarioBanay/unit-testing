@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import com.mariobanay.npp.aspects.ExceptionAspect;
 import com.mariobanay.npp.aspects.LoggerAspect;
 
 @Configuration
@@ -14,5 +15,9 @@ public class SpringConfig {
 	public LoggerAspect logger() {
 		return new LoggerAspect();
 	}
-
+	
+	@Bean
+	public ExceptionAspect exception() {
+		return new ExceptionAspect();
+	}
 }
