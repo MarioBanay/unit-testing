@@ -56,8 +56,8 @@ public class Item {
 		return quantity;
 	}
 
-	@Override
+/*	@Override
 	public String toString() {
 		return "Item [id=" + id + ", name=" + name + ", price=" + price + ", quantity=" + quantity + "]";
-	}
+	}*/
 }
