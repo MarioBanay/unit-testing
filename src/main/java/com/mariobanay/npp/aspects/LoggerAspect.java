@@ -19,17 +19,16 @@ public class LoggerAspect {
 	
 	@Before("itemsFromService()")
 	public void testAdvice() {
-		System.out.println("Test AdviceBefore");
+		System.out.println("Test Advice Before");
 	}
 	
 	@After("itemsFromService()")
 	public void testAdvice1() {
-		System.out.println("Test AdviceAfter");
+		System.out.println("Test Advice After");
 	}
 
 	@AfterReturning(pointcut="execution(* com.mariobanay.npp.controller.ItemController.*(..))", returning="result")
 	public void testAdvice2(JoinPoint joinpoint, Object result) {
 		System.out.println("Controller returned: " + result.toString());
 	}
-	
 }
