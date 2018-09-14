@@ -12,12 +12,22 @@ import com.mariobanay.npp.business.ItemServiceImpl;
 import com.mariobanay.npp.business.exceptions.NoItemException;
 import com.mariobanay.npp.model.Item;
 
+import io.micrometer.core.annotation.Timed;
+
 
 @RestController
 public class ItemController {
 	
 	@Autowired
 	private ItemServiceImpl businesService;
+	
+	@Timed(
+			value = "npp controller request",
+			histogram = true,
+			percentiles = {0.95, 0.99},
+			extraTags = {"version", "1.0"}
+			)
+	
 	
 	@GetMapping("/dummy-item")
 	public Item dummyItem() {
