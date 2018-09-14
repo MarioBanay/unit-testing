@@ -17,13 +17,15 @@ import com.mariobanay.npp.model.Item;
 @DataJpaTest
 public class ItemRepositoryTest {
 
+	private static final long EXPECTED_VALUE = 3;
+	
 	@Autowired
 	ItemRepository repository;
 	
 	@Test
 	public void testFindAll() {
 		List<Item> items = repository.findAll();
-		assertEquals(3, items.size());
+		assertEquals(EXPECTED_VALUE, items.size());
 	}
 
 }

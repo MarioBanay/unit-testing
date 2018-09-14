@@ -20,5 +20,4 @@ public class UnitTestingApplicationTests {
 	public void applicationContextTest() {
 		UnitTestingApplication.main(new String[] {});
 	}
-
 }

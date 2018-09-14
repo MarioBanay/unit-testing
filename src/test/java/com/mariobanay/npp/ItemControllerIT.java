@@ -14,12 +14,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
 public class ItemControllerIT {
 	
+	private static final String EXPECTED_VALUE = "[{id:10001},{id:10002},{id:10003}]";
+	
 	@Autowired
 	private TestRestTemplate restTemplate;
 	
 	@Test
 	public void contextLoads() throws JSONException {
 		String response = this.restTemplate.getForObject("/all-items-from-database", String.class);
-		JSONAssert.assertEquals("[{id:10001},{id:10002},{id:10003}]", response, false);
+		JSONAssert.assertEquals(EXPECTED_VALUE, response, false);
 	}
 }

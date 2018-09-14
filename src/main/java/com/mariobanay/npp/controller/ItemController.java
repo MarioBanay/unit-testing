@@ -14,39 +14,35 @@ import com.mariobanay.npp.model.Item;
 
 import io.micrometer.core.annotation.Timed;
 
-
 @RestController
 public class ItemController {
 	
+	private static final Item TEST_ITEM = new Item(1, "Ball", 10, 100);
+
 	@Autowired
 	private ItemServiceImpl businesService;
-	
-	@Timed(
-			value = "npp controller request",
-			histogram = true,
-			percentiles = {0.95, 0.99},
-			extraTags = {"version", "1.0"}
-			)
-	
+
+	@Timed(value = "npp controller request", histogram = true, percentiles = { 0.95, 0.99 }, extraTags = { "version",
+			"1.0" })
+
 	@GetMapping("/dummy-item")
 	public Item dummyItem() {
-		return new Item(1, "Ball", 10, 100);
+		return TEST_ITEM;
 	}
-	
+
 	@GetMapping("/item-from-business-service")
 	public Item itemFromBusinesService() {
 		return businesService.retrieveHardcodedItem();
 	}
-	
+
 	@GetMapping("/all-items-from-database")
-	public List<Item> retrieveAllItems(){
+	public List<Item> retrieveAllItems() {
 		return businesService.retrieveAllItems();
 	}
-	
+
 	@GetMapping(value = "/item-from-business-service/{id}")
 	@ResponseBody
-	public String retrieveItemsById(
-	  @PathVariable("id") Integer id) throws NoItemException{
+	public String retrieveItemsById(@PathVariable("id") Integer id) throws NoItemException {
 		String item = null;
 		item = businesService.findById(id).toString();
 		return item;
