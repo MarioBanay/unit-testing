@@ -1,8 +1,10 @@
 C:\Users\M\Documents\workspace_unit_testing\npp_app\src\main\java\com\mariobanay\npp\controller\ItemController.java
 C:\Users\M\Documents\workspace_unit_testing\npp_app\src\main\java\com\mariobanay\npp\UnitTestingApplication.java
+C:\Users\M\Documents\workspace_unit_testing\npp_app\src\main\java\com\mariobanay\npp\aspects\ExceptionAspect.java
 C:\Users\M\Documents\workspace_unit_testing\npp_app\src\main\java\com\mariobanay\npp\model\Item.java
 C:\Users\M\Documents\workspace_unit_testing\npp_app\src\main\java\com\mariobanay\npp\config\SpringConfig.java
 C:\Users\M\Documents\workspace_unit_testing\npp_app\src\main\java\com\mariobanay\npp\data\ItemRepository.java
+C:\Users\M\Documents\workspace_unit_testing\npp_app\src\main\java\com\mariobanay\npp\business\exceptions\NoItemException.java
 C:\Users\M\Documents\workspace_unit_testing\npp_app\src\main\java\com\mariobanay\npp\business\ItemService.java
 C:\Users\M\Documents\workspace_unit_testing\npp_app\src\main\java\com\mariobanay\npp\aspects\LoggerAspect.java
 C:\Users\M\Documents\workspace_unit_testing\npp_app\src\main\java\com\mariobanay\npp\business\ItemServiceImpl.java
