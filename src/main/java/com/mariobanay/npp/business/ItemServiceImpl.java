@@ -32,6 +32,7 @@ public class ItemServiceImpl implements ItemService {
 		return items;	
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public Optional findById(Integer id) throws NoItemException{
 	
 		Optional item = repository.findById(id);

@@ -28,7 +28,6 @@ public class ItemController {
 			extraTags = {"version", "1.0"}
 			)
 	
-	
 	@GetMapping("/dummy-item")
 	public Item dummyItem() {
 		return new Item(1, "Ball", 10, 100);

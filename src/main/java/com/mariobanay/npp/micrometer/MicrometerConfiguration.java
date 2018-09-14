@@ -9,6 +9,7 @@ import io.micrometer.core.instrument.MeterRegistry;
 @Configuration
 public class MicrometerConfiguration {
 	
+	@SuppressWarnings("rawtypes")
 	@Bean
 	MeterRegistryCustomizer meterRegistryCustomizer(MeterRegistry meterRegistry) {
 		return meterRegistry1 -> {
